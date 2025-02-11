@@ -12,7 +12,6 @@ function replyCount(replies) {
   return replies.filter(reply => reply.thread_id === thread._id).length;
 }
 
-const threads = [];
 const replies = [];
 const boards = {};
 
@@ -63,7 +62,7 @@ module.exports = function (app) {
       // Add the new thread to the board's threads array
       boards[board].push(thread);
 
-      res.redirect("/b/" + board + "/");
+      res.json(thread);
     })
     .put(function (req, res) {
       let board = req.params.board;
